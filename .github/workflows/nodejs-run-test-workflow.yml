@@ -2,7 +2,7 @@
 name: nodejs-run-test-workflow
 on: push
 jobs:
-  run-test-nodejs-app:
+  test:
     runs-on: ubuntu-slim
     steps:
       - name: getting my code first
@@ -15,4 +15,18 @@ jobs:
         run: npm install
       - name: Testing App
         run: npm test 
+  build:
+    runs-on: ubuntu-slim
+    steps:
+      - name: getting code first
+        uses: actions/checkout@v6
+      - name: Installing node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22.15.1'
+      - name: Installing dependencies
+        run: npm install
+      - name: start my app
+        run: npm run build
+
       
